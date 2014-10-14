@@ -1,6 +1,6 @@
 # Summary
 
 * [Introduction](README.md)
-* [Cowboy](cowboy/README.md)
-* [Plug](plug/README.md)
+* [Building a Basic Application](building-a-basic-application/README.md)
+* [Make It Uniform](make-it-uniform/README.md)
 

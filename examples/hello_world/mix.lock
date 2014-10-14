@@ -1,0 +1,3 @@
+%{"cowboy": {:package, "1.0.0"},
+  "cowlib": {:package, "1.0.0"},
+  "ranch": {:package, "1.0.0"}}
