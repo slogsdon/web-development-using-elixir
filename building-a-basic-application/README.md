@@ -1,8 +1,12 @@
 # Building a Basic Application
 
-Create our project:
+Starting with any project in a new-to-you language, a big question is usually, "Where do I put my files?" Well, fret not! We'll use Mix to generate a project skeleton for us.
 
-```bash
+> Mix is a build tool that provides tasks for creating, compiling, testing Elixir projects, as well as handle dependencies, and more.
+
+Let's create our project with `mix new`:
+
+```
 $ mix new hello_world --sup
 * creating README.md
 * creating .gitignore
@@ -26,10 +30,13 @@ Run `mix help` for more commands.
 $ cd hello_world
 ```
 
-Open our `mix.exs` to take a look:
+We passed two arguments to the `mix new` task: a project name in snake case (`hello_world`) and the `--sup` flag. Mix used the project name as our OTP application name and converted it to camel case (`HelloWorld`) for use in module names when creating our project. The `--sup` flag let Mix know that we wanted it to create an OTP supervisor and an OTP application callback in our main `HelloWorld` module.
+
+## Mixing It Up
+
+Moving on into the future, Mix will help us with our dependencies, testing our app, running our app, and more, but how does Mix know enough about our project to help us so much? Our Mixfile, of course! Let's open our `mix.exs` to take a look:
 
 ```elixir
-$ cat mix.exs
 defmodule HelloWorld.Mixfile do
   use Mix.Project
 
@@ -41,7 +48,7 @@ defmodule HelloWorld.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :cowboy],
+    [applications: [:logger],
      mod: {HelloWorld, []}]
   end
 
@@ -50,6 +57,12 @@ defmodule HelloWorld.Mixfile do
   end
 end
 ```
+
+Two key things to look at are `project/0` and `application/0` (the `project` and `application` functions).
+
+`HelloWorld.Mixfile.project/0`
+
+`HelloWorld.Mixfile.application/0`
 
 Add Cowboy as a dependency:
 
@@ -61,7 +74,7 @@ Add Cowboy as a dependency:
 
 Get deps from Hex:
 
-```bash
+```
 $ mix deps.get
 Running dependency resolution
 Unlocked:   cowboy
@@ -151,7 +164,7 @@ end
 
 Run:
 
-```bash
+```
 $ iex -S mix
 Erlang/OTP 17 [erts-6.2] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
 
@@ -205,4 +218,18 @@ Interactive Elixir (1.0.0) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)>
 ```
 
-[`HelloWorld` project page](https://github.com/slogsdon/web-development-using-elixir/tree/master/examples/hello_world)
+Test:
+
+```
+$ curl -i http://localhost:8080
+HTTP/1.1 200 OK
+connection: keep-alive
+server: Cowboy
+date: Tue, 14 Oct 2014 00:52:09 GMT
+content-length: 12
+content-type: text/plain
+
+Hello world!
+```
+
+[`HelloWorld`](https://github.com/slogsdon/web-development-using-elixir/tree/master/examples/hello_world) project page
