@@ -5,7 +5,7 @@ defmodule HelloWorld do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(__MODULE__, [], function: :run)
+    #      worker(__MODULE__, [], function: :run)
     ]
 
     opts = [strategy: :one_for_one, name: HelloWorld.Supervisor]
