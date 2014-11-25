@@ -1,7 +1,6 @@
 {
     "plugins": [
-        "autocover",
-        "ga"
+        "autocover"
     ],
     "pluginsConfig": {}
 }
