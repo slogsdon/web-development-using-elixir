@@ -72,7 +72,7 @@ Two key things to look at are `project/0` and `application/0` (the `project` and
 
 `mod: {HelloWorld, []}` provides details for OTP to run your application. With Mix building your project's skeleton, you shouldn't need to change this, but the first element in the tuple is the module that contains the `start/2` callback function for the `Application` behaviour, which in our case is `HelloWorld`. If you ever rename your project and/or rename/refactor your modules, be sure to update this line to reflect any changes.
 
-# Getting Down to Business
+## Getting Down to Business
 
 Now for us to get a web application running, we'll need a server that can speak HTTP, so it's time for you to build a `HTTP/1.1` compliant server. You have fun with that. I'll wait.
 
@@ -119,7 +119,7 @@ Unpacked package tarball (/Users/shane/.hex/packages/ranch-1.0.0.tar)
 
 Thanks to the power of Hex and S3, that shouldn't have taken long. We're now able to implement Cowboy into our project to leverage all of the goodness it provides.
 
-# Adding the Fun (but Necessary) Bits
+## Adding the Fun (but Necessary) Bits
 
 Open up `lib/hello_world.ex` so we can get to work. Most of the work here will entail getting Cowboy set up so that it will listen for incoming requests. Even though we have set up our `mix.exs` file to start the `:cowboy` OTP application, Cowboy doesn't start HTTP or HTTPS listeners by default and relys on developers (us) to do so.
 
@@ -177,7 +177,7 @@ end
 
 When called, `run/0` will allow our application to respond to all requests to `http://localhost:8080/`.
 
-## Handle Yourself Properly
+### Handle Yourself Properly
 
 We defined a singular route that has some sort of relation to an undefined `HelloWorld.Handler` module, but what should be in this module? Create `lib/hello_world/handler.ex`, and put this in it:
 
@@ -204,7 +204,7 @@ end
 
 `handle/2` and `terminate/3` aren't terribly useful in this example, but in other cases, they offer the means to control the lifespan of the Erlang process that is spawned to handle the request. For now, consider them necessary boilerplate code.
 
-# Running Our Marvelous Work
+## Running Our Marvelous Work
 
 Now's the time for our hard work to pay off. Pass mix as a script to IEx with `iex -S mix`:
 
