@@ -34,7 +34,7 @@ We passed two arguments to the `mix new` task: a project name in snake case (`he
 
 Follow along in your own environment, or pull down the project from the [`HelloWorld`](https://github.com/slogsdon/web-development-using-elixir/tree/master/examples/hello_world) project page.
 
-# Mixing It Up
+## Mixing It Up
 
 Moving on into the future, Mix will help us with our dependencies, testing our app, running our app, and more, but how does Mix know enough about our project to help us so much? Our Mixfile, of course! Let's open our `mix.exs` to take a look:
 
